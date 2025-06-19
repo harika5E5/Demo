@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Tracking Input</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        
+                        font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f8caca, #c3e0e5,#f8d7a3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 80px 20px;
+        }
+
+        .taskbar {
+            width: 100%;
+            background: linear-gradient(to right, #8A2BE2, #6A5ACD);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        .taskbar-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .taskbar-right {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .taskbar-right a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .taskbar-right a:hover {
+            text-decoration: underline;
+        }
+
+        .logout-btn {
+            background: #ff4d4d;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: #cc0000;
+        }
+
+        .form-container {
+            width: 600px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .form-container h2 {
+            margin-bottom: 20px;
+            color: #8A2BE2;
+        }
+
+        .input-box {
+            width: 44%;
+            padding: 10px;
+            border: 2px solid #8A2BE2;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .waste-category {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .waste-category h3 {
+            color: #6A5ACD;
+            margin-bottom: 10px;
+        }
+
+        .sub-section {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            border: 2px solid #8A2BE2;
+            border-radius: 5px;
+            background: #f9f9f9;
+            margin-bottom: 10px;
+        }
+
+        .sub-section h4 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .waste-input, .disposal-select {
+            flex: 1;
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 2px solid #8A2BE2;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            background: #8A2BE2;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 15px;
+        }
+
+        .submit-btn:hover {
+            background: #6A5ACD;
+        }
+        .waste-type-grid {
+    
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr; /* Three equal columns */
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 8px;
+        }
+
+.waste-label {
+    font-weight: bold;
+}
+
+.waste-input, .disposal-select {
+    width: 100%;
+    padding: 5px;
+    border: 2px solid #8A2BE2;
+    border-radius: 10px;
+    font-size: 14px;
+}
+.input-box {
+    width: 20%;
+    padding: 10px;
+    border: 2px solid #8A2BE2;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+
+    </style>
+</head>
+<body>
+
+    <!-- Taskbar -->
+    <div class="taskbar">
+        <div class="taskbar-title">Waste Tracker</div>
+        <div class="taskbar-right">
+            <a href="./home.html">Home</a>
+            <a href="./analysis.html">Analysis</a>
+            <a href="./update.html">Update</a>
+            <a href="./suggestion.html">Suggestion</a>
+           <a href="./loginsignup.html"> <button class="logout-btn">Logout</button></a>
+        </div>
+    </div>
+
+    <!-- Form -->
+
+        <!-- Dry Waste Section -->
+         <!-- Family Members Input -->
+            <!-- Kitchen Waste -->
+            <input type="number" class="input-box" placeholder="No. of Family Members" min="1"required>
+            <div class="sub-section">
+                <h4>Kitchen Waste</h4>
+                <div class="waste-type-grid">
+                    <label class="waste-label">Organic Waste</label>
+                    <input type="number" class="waste-input" placeholder="Weight in kg" min="0" step="0.1">
+                    <select class="disposal-select" required>
+                        <option value="" disabled selected>Disposal Method</option>
+                        <option value="recycling">Recycling</option>
+                        <option value="landfill">Landfill</option>
+                        <option value="incineration">Incineration</option>
+                        <option value="composting">Composting</option>
+                        <option value="hazardous-waste-processing">Hazardous Waste Processing</option>
+                    </select>
+                </div>
+                
+                    
+                <div class="waste-type-grid">
+                    <label class="waste-label">Inorganic Waste</label>
+                    <input type="number" class="waste-input" placeholder="Weight in kg" min="0" step="0.1">
+                    <select class="disposal-select" required>
+                        <option value="" disabled selected>Disposal Method</option>
+                        <option value="recycling">Recycling</option>
+                        <option value="landfill">Landfill</option>
+                        <option value="incineration">Incineration</option>
+                        <option value="composting">Composting</option>
+                        <option value="hazardous-waste-processing">Hazardous Waste Processing</option>
+                    </select>
+                </div>
+                
+                    
+                <div class="waste-type-grid">
+                    <label class="waste-label">Electronic Waste</label>
+                    <input type="number" class="waste-input" placeholder="Weight in kg" min="0" step="0.1">
+                    <select class="disposal-select" required>
+                        <option value="" disabled selected>Disposal Method</option>
+                        <option value="recycling">Recycling</option>
+                        <option value="landfill">Landfill</option>
+                        <option value="incineration">Incineration</option>
+                        <option value="composting">Composting</option>
+                        <option value="hazardous-waste-processing">Hazardous Waste Processing</option>
+                    </select>
+                </div>
+                
+                </div>
+            
+            
+
+            <!-- Garden Waste -->
+            <div class="sub-section">
+                <h4>Garden Waste</h4>
+                <div class="waste-type-grid">
+                    <label class="waste-label">Organic Waste</label>
+                    <input type="number" class="waste-input" placeholder="Weight in kg" min="0" step="0.1">
+                    <select class="disposal-select" required>
+                        <option value="" disabled selected>Disposal Method</option>
+                        <option value="recycling">Recycling</option>
+                        <option value="landfill">Landfill</option>
+                        <option value="incineration">Incineration</option>
+                        <option value="composting">Composting</option>
+                        <option value="hazardous-waste-processing">Hazardous Waste Processing</option>
+                    </select>
+                </div>
+                
+                    
+                <div class="waste-type-grid">
+                    <label class="waste-label">Inorganic Waste</label>
+                    <input type="number" class="waste-input" placeholder="Weight in kg" min="0" step="0.1">
+                    <select class="disposal-select" required>
+                        <option value="" disabled selected>Disposal Method</option>
+                        <option value="recycling">Recycling</option>
+                        <option value="landfill">Landfill</option>
+                        <option value="incineration">Incineration</option>
+                        <option value="composting">Composting</option>
+                        <option value="hazardous-waste-processing">Hazardous Waste Processing</option>
+                    </select>
+                </div>
+                
+                    
+                <div class="waste-type-grid">
+                    <label class="waste-label">Electronic Waste</label>
+                    <input type="number" class="waste-input" placeholder="Weight in kg" min="0" step="0.1">
+                    <select class="disposal-select" required>
+                        <option value="" disabled selected>Disposal Method</option>
+                        <option value="recycling">Recycling</option>
+                        <option value="landfill">Landfill</option>
+                        <option value="incineration">Incineration</option>
+                        <option value="composting">Composting</option>
+                        <option value="hazardous-waste-processing">Hazardous Waste Processing</option>
+                    </select>
+                </div>
+                </div>
+                </div>
+            </div>
+            
+
+            <!-- Other Waste -->
+            <div class="sub-section">
+                <h4>Other Waste</h4>
+                <div class="waste-type-grid">
+                    <label class="waste-label">Organic Waste</label>
+                    <input type="number" class="waste-input" placeholder="Weight in kg" min="0" step="0.1">
+                    <select class="disposal-select" required>
+                        <option value="" disabled selected>Disposal Method</option>
+                        <option value="recycling">Recycling</option>
+                        <option value="landfill">Landfill</option>
+                        <option value="incineration">Incineration</option>
+                        <option value="composting">Composting</option>
+                        <option value="hazardous-waste-processing">Hazardous Waste Processing</option>
+                    </select>
+                </div>
+                
+                <div class="waste-type-grid">
+                    <label class="waste-label">Inorganic Waste</label>
+                    <input type="number" class="waste-input" placeholder="Weight in kg" min="0" step="0.1">
+                    <select class="disposal-select" required>
+                        <option value="" disabled selected>Disposal Method</option>
+                        <option value="recycling">Recycling</option>
+                        <option value="landfill">Landfill</option>
+                        <option value="incineration">Incineration</option>
+                        <option value="composting">Composting</option>
+                        <option value="hazardous-waste-processing">Hazardous Waste Processing</option>
+                    </select>
+                </div>
+                
+                    
+                <div class="waste-type-grid">
+                    <label class="waste-label">Electronic Waste</label>
+                    <input type="number" class="waste-input" placeholder="Weight in kg" min="0" step="0.1">
+                    <select class="disposal-select" required>
+                        <option value="" disabled selected>Disposal Method</option>
+                        <option value="recycling">Recycling</option>
+                        <option value="landfill">Landfill</option>
+                        <option value="incineration">Incineration</option>
+                        <option value="composting">Composting</option>
+                        <option value="hazardous-waste-processing">Hazardous Waste Processing</option>
+                    </select>
+                </div>
+                
+                </div>
+            </div>
+        </div>
+
+       <a href="./analysis.html"> <button class="submit-btn" onclick="handleSubmit()">Submit</button></a>
+    </div>
+
+    <script>
+        function handleSubmit() {
+            const inputs = document.querySelectorAll('.waste-input');
+            const selects = document.querySelectorAll('.disposal-select');
+
+            for (let input of inputs) {
+                if (!input.value) {
+                    alert('Please fill out all waste weight fields.');
+                    return;
+                }
+            }
+
+            for (let select of selects) {
+                if (!select.value) {
+                    alert('Please select disposal methods for all waste types.');
+                    return;
+                }
+            }
+
+            alert('Waste tracked successfully!');
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Management System - Analysis</title>
+    <style>
+        body {
+            background: url('waterfall-animation.gif') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+        }
+        .analysis-container {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            margin: 50px auto;
+            width: 80%;
+            border-radius: 10px;
+        }
+        .chart {
+            width: 100% !important;
+            height: 400px !important;
+            display: block;
+        }
+        .year-labels {
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .legend {
+            margin-top: 20px;
+            font-size: 16px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .legend span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .legend div {
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+        }
+        .red { background-color: red; }
+        .green { background-color: green; }
+        .blue { background-color: blue; }
+    </style>
+</head>
+<body>
+    <div class="analysis-container">
+        <h1>Analysis of Household Waste Management Monthly</h1>
+        <p>Here is the analysis of household waste management over the years.</p>
+        <canvas id="quizChart" class="chart"></canvas>
+        <div class="year-labels">2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024</div>
+        <div class="legend">
+            <span><div class="red"></div> Plastic Waste</span>
+            <span><div class="green"></div> Organic Waste</span>
+            <span><div class="blue"></div> Electronic Waste</span>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/chart.umd.min.js"></script>
+    <script>
+        function getRandomData() {
+            return Array.from({ length: 7 }, () => Math.floor(Math.random() * 50));
+        }
+        
+        var ctx = document.getElementById('quizChart').getContext('2d');
+        var quizChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+                datasets: [{
+                    label: 'Plastic Waste',
+                    data: getRandomData(),
+                    backgroundColor: 'red'
+                }, {
+                    label: 'Organic Waste',
+                    data: getRandomData(),
+                    backgroundColor: 'green'
+                }, {
+                    label: 'Electronic Waste',
+                    data: getRandomData(),
+                    backgroundColor: 'blue'
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Percentage'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Years'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

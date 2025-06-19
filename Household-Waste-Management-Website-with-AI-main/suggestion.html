@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Management Suggestions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f8caca, #c3e0e5,#f8d7a3);
+            color: #1a1a1a;
+            text-align: center;
+            
+            margin-top: 80px; /* Ensure there's space between the header and body content */
+        }
+
+        .container {
+            margin-top: 200px; /* Increase this value to add more gap under the header */
+        }
+
+        select,
+        input,
+        button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .suggestion-box {
+            background-color: #af9595;
+            padding: 10px;
+            margin: 10px auto;
+            width: 50%;
+            border-radius: 5px;
+            color: white;
+            font-size: 14px;
+        }
+
+        .taskbar {
+            width: 100%;
+            background: purple;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        .taskbar-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .taskbar-right {
+            display: flex;
+            gap: 30px; /* Increased the gap here to create more space between items */
+            align-items: center;
+        }
+
+        .taskbar-right a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .taskbar-right a:hover {
+            text-decoration: underline;
+        }
+
+        .logout-btn {
+            background: #ff4d4d;
+            width: 150px;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: #cc0000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="taskbar">
+        <div class="taskbar-title">Waste Tracker</div>
+        <div class="taskbar-right">
+            <a href="./home.html">Home</a>
+            <a href="./analysis.html">Analysis</a>
+            <a href="./update.html">Update</a>
+            <a href="./suggestion.html">Suggestion</a>
+            <a href="./loginsignup.html"><button class="logout-btn">Logout</button></a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Waste Management Suggestions</h1>
+        <label for="wasteType">Select Waste Type:</label>
+        <select id="wasteType">
+            <option value="organic">Organic Waste</option>
+            <option value="plastic">Plastic Waste</option>
+            <option value="electronic">Electronic Waste</option>
+        </select>
+
+        <label for="wastePercentage">Enter Percentage of Waste:</label>
+        <input type="number" id="wastePercentage" min="0" max="100" placeholder="Enter percentage">
+
+        <button onclick="getSuggestions()">Get Suggestions</button>
+
+        <div id="suggestions"></div>
+    </div>
+
+    <script>
+        function getSuggestions() {
+            const wasteType = document.getElementById("wasteType").value;
+            const wastePercentage = document.getElementById("wastePercentage").value;
+            const suggestionsDiv = document.getElementById("suggestions");
+            suggestionsDiv.innerHTML = ""; // Clear previous suggestions
+
+            if (!wastePercentage || wastePercentage < 0 || wastePercentage > 100) {
+                alert("Please enter a valid percentage of waste (between 0 and 100).");
+                return;
+            }
+
+            const suggestions = {
+                organic: {
+                    recycle: ["Create compost", "Convert to biogas", "Use for animal feed"],
+                    reuse: ["Use for gardening", "Make organic fertilizers"],
+                    reduce: ["Buy in bulk to reduce packaging waste", "Use leftovers creatively"]
+                },
+                plastic: {
+                    recycle: ["Recycle at local centers", "Use in construction materials"],
+                    reuse: ["Use for DIY projects", "Repurpose as storage containers"],
+                    reduce: ["Use reusable bags", "Avoid single-use plastics"]
+                },
+                electronic: {
+                    recycle: ["Send to e-waste recycling centers", "Extract valuable metals"],
+                    reuse: ["Donate functional electronics", "Refurbish and resell"],
+                    reduce: ["Buy energy-efficient devices", "Extend product lifespan through maintenance"]
+                }
+            };
+
+            // Loop through the recycle, reuse, and reduce categories
+            ["recycle", "reuse", "reduce"].forEach((category) => {
+                const categoryTitle = document.createElement("h3");
+                categoryTitle.textContent = category.charAt(0).toUpperCase() + category.slice(1) + " Methods:";
+                suggestionsDiv.appendChild(categoryTitle);
+
+                suggestions[wasteType][category].forEach((tip) => {
+                    const suggestionBox = document.createElement("div");
+                    suggestionBox.classList.add("suggestion-box");
+                    suggestionBox.textContent = tip;
+                    suggestionsDiv.appendChild(suggestionBox);
+                });
+            });
+        }
+    </script>
+
+</body>
+
+</html>
