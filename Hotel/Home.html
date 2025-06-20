@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        div {
+            display: flex ;
+            flex-direction: column;
+            background-image: url("./Home.png");
+            background-repeat: no-repeat;
+            background-size: cover; 
+            height: 100vh;
+            width: 1500px;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            color: crimson;
+            text-align: center; 
+            font-size:xx-large;
+            
+        }
+        h2 {
+            color:white;
+            text-align: center;
+            font-size: x-large; 
+            animation-name: test;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+            
+        }
+        @keyframes test{
+            from{
+                font-size: 20px;
+                color: aqua;
+            }
+            to{
+                font-size: 25px;
+                color: blue;
+                transform:translateX(100px)
+            }
+        }
+        h2:hover{
+            color:skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1><strong>Welcome to Food World</strong></h1>
+        <h2><i>Best Food for Your Taste ! !</i></h2>
+    </div>
+</body>
+</html>
